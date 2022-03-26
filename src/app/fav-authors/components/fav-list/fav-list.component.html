@@ -8,7 +8,7 @@
         [tablePaginationConfig]="tablePaginationConfig"
         paginationClass="d-flex justify-content-center mt-2"
         (onPagination)="onPageNumberChange($event)"
-        (onRowAddFavBtnClick)="onClickAddFavBtn($event)"
+        (onRowRemoveFavBtnClick)="onRemoveFromFavList($event)"
         *ngIf="authors"></app-list-item>
     </div>
   </div>

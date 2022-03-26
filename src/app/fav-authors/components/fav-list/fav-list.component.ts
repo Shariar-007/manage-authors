@@ -1,34 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthorsService} from "../../services/authors.service";
-import {Authors} from "../../models/authors.model";
+import { Component, OnInit } from '@angular/core';
+import {Authors} from "../../../authors/models/authors.model";
 import {DataConfig, RowData, TablePaginationConfig} from "../../../models/list-table.model";
+import {AuthorsService} from "../../../authors/services/authors.service";
+import {FavListService} from "../../services/fav-list.service";
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  selector: 'app-fav-list',
+  templateUrl: './fav-list.component.html',
+  styleUrls: ['./fav-list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class FavListComponent implements OnInit {
+
   authors: Authors | undefined;
   page: number = 1;
   size: number = 10;
 
   tableConfig: DataConfig = {
-    tableTitle: "Author List",
+    tableTitle: "Favourite Author List",
     columns: [
       {title: "S/L", dataField: "serial", sortable: false, filterable: false, width: '80px'},
       {title: "NAME", dataField: "name", sortable: false, filterable: true, width: 'auto'},
-      {title: "BIO", dataField: "bio", sortable: false, filterable: true, width: '30%'},
-      {title: "LINK", dataField: "link", sortable: false, filterable: true, width: '25%'},
-      {title: "ACTION", dataField: "ROW_ACTION", width: '160px'},
+      {title: "BIO", dataField: "bio", sortable: false, filterable: true, width: '40%'},
+      {title: "LINK", dataField: "link", sortable: false, filterable: true, width: '30%'},
+      {title: "ACTION", dataField: "ROW_ACTION", width: 'auto'},
       // {title: "STATUS", dataField: "status", sortable: false, filterable: true},
     ],
     rowActions: [
-      {label: "Add Favourite", actionIdToReturn: "add", showOption: (x: any) => true},
-
-
-      // {label: "Add Favourite", actionIdToReturn: "edit", iconImgUrl: "fa fa-edit", showOption: (x: any) => true},
-      // {label: "Delete", actionIdToReturn: "delete", iconImgUrl: "fa fa-trash", showOption: (x: any) => !x.isActive},
+      {label: "Remove", actionIdToReturn: "remove", showOption: (x: any) => true},
     ],
   }
 
@@ -38,7 +36,7 @@ export class ListComponent implements OnInit {
     total: 0
   }
 
-  constructor(private authorsService: AuthorsService) {
+  constructor(private favListService: FavListService) {
   }
 
   ngOnInit(): void {
@@ -46,7 +44,7 @@ export class ListComponent implements OnInit {
   }
 
   getAuthors(page: number = this.page, size = this.size) {
-    this.authorsService.getAuthors(page, size).subscribe((res: Authors) => {
+    this.favListService.getFavouriteAuthors(page, size).subscribe((res: Authors) => {
       this.authors = res;
       // console.log(res);
       for (let i = 0; i < this.authors.results.length; i++) {
@@ -65,7 +63,7 @@ export class ListComponent implements OnInit {
     return (currentIndex + 1 + (currentPage * pageSize));
   }
 
-  onClickAddFavBtn(event: RowData) {
+  onRemoveFromFavList(event: RowData) {
     console.log(event);
   }
 }

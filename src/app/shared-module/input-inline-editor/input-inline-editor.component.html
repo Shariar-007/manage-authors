@@ -1,0 +1,8 @@
+<div class="d-flex" [ngStyle]="{'justify-content': alignItem}">
+  <div *ngIf="!toggleInputView; else input_field"> {{ value }} </div>
+  <ng-template #input_field class="">
+    <div [ngStyle]="{'width': width+'px', 'height': height+'px'}">
+      <input [ngStyle]="{'height': height+'px'}" style="height: 30px;" type="text" class="form-control" [value]="value" (change)="onValuChange($event)" />
+    </div>
+  </ng-template>
+</div>

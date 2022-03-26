@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+#table {
+  background-color: #E5E5E5;
+  border-radius: 5px;
+
+  table.table-bordered > thead > tr > th {
+    border-top: 1px solid #E5E5E5 !important;
+    border-bottom: 5px solid white !important;
+    background-color: #FF6516;
+    color: #FFF;
+    line-height: 1.2;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: normal !important;
+  }
+
+  .table-bordered td, .table-bordered th {
+    border: none !important;
+  }
+
+  table.table-bordered > tbody > tr > td {
+    border-top: 5px solid white !important;
+    border-bottom: 5px solid white !important;
+    background-color: #F5F5F5;
+    color: #000000;
+    font-size: 0.875rem;
+    padding: 5px;
+    vertical-align: middle;
+    //overflow: auto;
+    //text-overflow: ellipsis;
+    overflow: auto;
+    //white-space: nowrap;
+    //max-width: 150px;
+  }
+
+  //table.table-bordered > tbody > tr {
+  //  .fa-check {
+  //    color: green;
+  //  }
+  //
+  //  .fa-times {
+  //    color: red;
+  //  }
+  //
+  //  .fa-flag {
+  //    color: #d70808;
+  //  }
+  //}
+}

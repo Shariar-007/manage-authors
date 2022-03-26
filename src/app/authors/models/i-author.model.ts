@@ -7,5 +7,6 @@ export interface IAuthor {
   quoteCount: number,
   slug: string,
   dateAdded: string,
-  dateModified: string
+  dateModified: string,
+  serial: number
 }

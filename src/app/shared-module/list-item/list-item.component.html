@@ -1,0 +1,40 @@
+<h4>{{tableConfig.tableTitle ? tableConfig.tableTitle : ''}}</h4>
+<div id="table" class="table-responsive">
+  <table class="table table-sm table-bordered mb-0" style="table-layout: fixed;">
+    <thead>
+    <tr class="subHeader">
+      <th *ngFor="let column of tableConfig?.columns" [ngStyle]="{'width': column.width}">{{ column?.title }}</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let data of dataSourceClone; let i = index">
+      <td *ngFor="let column of tableConfig?.columns; let c = index" class="text-center">
+        <ng-container *ngIf="column.dataField !== 'ROW_ACTION'; else action_row">
+          {{data[column.dataField]}}
+        </ng-container>
+
+        <ng-template #action_row>
+          <div *ngFor="let rowAction of tableConfig?.rowActions" class="px-1" style="cursor: pointer;">
+            <button type="button" class="btn btn-success" *ngIf="rowAction.actionIdToReturn.toUpperCase() == 'ADD'"
+                    (click)="onActionButtonClick(rowAction.actionIdToReturn, i, data)">{{rowAction.label}}</button>
+            <button type="button" class="btn btn-danger" *ngIf="rowAction.actionIdToReturn.toUpperCase() == 'REMOVE'"
+                    (click)="onActionButtonClick(rowAction.actionIdToReturn, i, data)">{{rowAction.label}}</button>
+          </div>
+        </ng-template>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="dataSourceClone.length === 0 && tableConfig.columns">
+  <img src="assets/nodata-found.png" class="rounded mx-auto d-block">
+</div>
+
+<div *ngIf="pagination" class="my-3" style="text-align: center;">
+  <nz-pagination [nzPageIndex]="tablePaginationConfig.page" [nzTotal]="tablePaginationConfig.total"
+                 (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+</div>
+
