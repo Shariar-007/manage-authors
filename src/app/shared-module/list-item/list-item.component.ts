@@ -1,11 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
-import {
-  ColumnTable,
-  DataConfig,
-  RowActionWithData,
-  RowData,
-  TablePaginationConfig
-} from "../../models/list-table.model";
+import {DataConfig, RowData, TablePaginationConfig} from "../models/list-table.model";
+
 
 @Component({
   selector: 'app-list-item',

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthorsService} from "../../services/authors.service";
 import {Authors} from "../../models/authors.model";
-import {DataConfig, RowData, TablePaginationConfig} from "../../../models/list-table.model";
 import {IAuthor} from "../../models/i-author.model";
+import {DataConfig, RowData, TablePaginationConfig} from "../../../shared-module/models/list-table.model";
 
 @Component({
   selector: 'app-list',

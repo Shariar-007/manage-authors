@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DataConfig, RowData} from "../../../models/list-table.model";
 import {IAuthor} from "../../../authors/models/i-author.model";
+import {DataConfig, RowData} from "../../../shared-module/models/list-table.model";
 
 @Component({
   selector: 'app-fav-list',
