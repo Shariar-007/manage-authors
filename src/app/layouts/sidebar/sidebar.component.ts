@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidebar',
@@ -9,21 +10,22 @@ export class SidebarComponent implements OnInit {
   isCollapsed = false;
   selectedSideBarMenu: string | null = 'AUTHOR';
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
     if (localStorage.getItem('selectedSideBarMenu')) {
       this.selectedSideBarMenu = localStorage.getItem('selectedSideBarMenu');
+      if (this.selectedSideBarMenu == 'FAV-AUTHOR'){
+        this.router.navigate(['./favourite-authors']);
+      } else {
+        this.router.navigate(['./authors']);
+      }
     }
   }
 
   onClickSideBar(selectedTab: string) {
     this.selectedSideBarMenu = selectedTab;
     localStorage.setItem('selectedSideBarMenu', selectedTab);
-    // this.authenticationService.selectedSideBar.next(selectedTab);
-    // if (this.get_logged_agent_type() == 'PROJECT_COORDINATOR') {
-    //   localStorage.setItem('inventory-tab', 'SUMMARY');
-    // }
   }
 }

@@ -2,14 +2,12 @@
   <div class="row">
     <div class="col-md-12">
       <app-list-item
-        [dataSource]="authors.results"
+        [dataSource]="favAuthors"
         [tableConfig]="tableConfig"
-        [pagination]="true"
-        [tablePaginationConfig]="tablePaginationConfig"
+        [pagination]="false"
         paginationClass="d-flex justify-content-center mt-2"
-        (onPagination)="onPageNumberChange($event)"
         (onRowRemoveFavBtnClick)="onRemoveFromFavList($event)"
-        *ngIf="authors"></app-list-item>
+        *ngIf="favAuthors"></app-list-item>
     </div>
   </div>
 </div>

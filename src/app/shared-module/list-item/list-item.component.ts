@@ -27,13 +27,8 @@ export class ListItemComponent implements OnInit {
   dataSourceClone: any[] = [];
   dataFields: any[] = []
 
-  modalData: any[] = []
-  editableColumnCount: number = 0
-  isASC: boolean = true;
 
-  constructor() {
-    // this.tablePaginationConfig = { ...this.tablePaginationConfig, currentPage: 1, itemsPerPage: 10 }
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.initialize()
@@ -41,7 +36,6 @@ export class ListItemComponent implements OnInit {
 
   initialize() {
     this.dataSourceClone = JSON.parse(JSON.stringify(this.dataSource));
-
     if (!this.tableConfig.columns) return;
 
     this.tableConfig.columns.forEach(c => this.dataFields.push(c.dataField));
@@ -52,12 +46,6 @@ export class ListItemComponent implements OnInit {
       })
       // this.rowEditable.push(array)
     })
-
-    this.tableConfig.columns.forEach(column => {
-      if (column.editable) this.editableColumnCount += 1;
-    })
-
-    // console.log(this.tableConfig.columns);
   }
 
   ngOnChanges(changes: SimpleChanges) {

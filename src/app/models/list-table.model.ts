@@ -20,6 +20,7 @@ export interface ColumnTable {
 export interface RowActions {
   label: string;
   actionIdToReturn: string;
+  // visible: boolean;
   // iconImgUrl?: string;
   showOption?(x: any): any;
 }

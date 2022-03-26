@@ -16,9 +16,10 @@
 
         <ng-template #action_row>
           <div *ngFor="let rowAction of tableConfig?.rowActions" class="px-1" style="cursor: pointer;">
-            <button type="button" class="btn btn-success" *ngIf="rowAction.actionIdToReturn.toUpperCase() == 'ADD'"
+<!--            rowAction.actionIdToReturn.toUpperCase() == 'ADD' &&     rowAction.actionIdToReturn.toUpperCase() == 'REMOVE' && -->
+            <button type="button" class="btn btn-success" *ngIf="!data.isFavourite && rowAction.actionIdToReturn.toUpperCase() == 'ADD'"
                     (click)="onActionButtonClick(rowAction.actionIdToReturn, i, data)">{{rowAction.label}}</button>
-            <button type="button" class="btn btn-danger" *ngIf="rowAction.actionIdToReturn.toUpperCase() == 'REMOVE'"
+            <button type="button" class="btn btn-danger" *ngIf="data.isFavourite && rowAction.actionIdToReturn.toUpperCase() == 'REMOVE'"
                     (click)="onActionButtonClick(rowAction.actionIdToReturn, i, data)">{{rowAction.label}}</button>
           </div>
         </ng-template>

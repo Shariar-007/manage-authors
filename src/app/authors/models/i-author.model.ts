@@ -8,5 +8,6 @@ export interface IAuthor {
   slug: string,
   dateAdded: string,
   dateModified: string,
-  serial: number
+  serial: number,
+  isFavourite: boolean
 }
