@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IAuthor} from "../../../authors/models/i-author.model";
 import {DataConfig, RowData} from "../../../shared-module/models/list-table.model";
 
@@ -9,7 +9,7 @@ import {DataConfig, RowData} from "../../../shared-module/models/list-table.mode
 })
 export class FavListComponent implements OnInit {
 
-  favAuthors: IAuthor[]  = [];
+  favAuthors: IAuthor[] = [];
   tableConfig: DataConfig = {
     tableTitle: "Favourite Author List",
     columns: [
@@ -28,11 +28,12 @@ export class FavListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.favAuthors = JSON.parse(<string>localStorage.getItem('fav-authors'));
-    // console.log(this.favAuthors);
-    for (let i = 0; i < this.favAuthors.length; i++) {
-      this.favAuthors[i].serial = i + 1;
-      this.favAuthors[i].isFavourite = true;
+    if (JSON.parse(<string>localStorage.getItem('fav-authors'))) {
+      this.favAuthors = JSON.parse(<string>localStorage.getItem('fav-authors'));
+      for (let i = 0; i < this.favAuthors.length; i++) {
+        this.favAuthors[i].serial = i + 1;
+        this.favAuthors[i].isFavourite = true;
+      }
     }
   }
 

@@ -14,6 +14,7 @@ import {IconsProviderModule} from './icons-provider.module';
 import {NzLayoutModule} from 'ng-zorro-antd/layout';
 import {NzMenuModule} from 'ng-zorro-antd/menu';
 import {SidebarComponent} from './layouts/sidebar/sidebar.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 registerLocaleData(en);
 
@@ -21,6 +22,7 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     SidebarComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

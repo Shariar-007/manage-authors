@@ -11,6 +11,13 @@
         (onRowAddFavBtnClick)="onClickAddFavBtn($event)"
         (onRowRemoveFavBtnClick)="onRemoveFromFavList($event)"
         *ngIf="authors"></app-list-item>
+      <nz-spin nzTip="Loading..." *ngIf="!authors">
+        <nz-alert
+          nzType="info"
+          nzMessage="Please keep Waiting."
+          nzDescription="Server is responding."
+        ></nz-alert>
+      </nz-spin>
     </div>
   </div>
 </div>
